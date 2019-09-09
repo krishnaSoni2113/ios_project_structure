@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .baseAppThemeColor
+        
         // Call api here..
         viewModel.login()
     }

@@ -16,6 +16,7 @@
 		481A9ABB22F4411100AF1304 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A9ABA22F4411100AF1304 /* LoginViewController.swift */; };
 		481A9ABF22F4413500AF1304 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A9ABE22F4413500AF1304 /* UserModel.swift */; };
 		481A9AC222F4416B00AF1304 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A9AC122F4416B00AF1304 /* UserViewModel.swift */; };
+		488E8ACD23267F950078059A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E8ACC23267F950078059A /* UIColor.swift */; };
 		48AB7CC423260F8200E23361 /* KxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB7CC323260F8200E23361 /* KxSwift.swift */; };
 		48F13B412322653D00ECDF6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F13B402322653D00ECDF6C /* Networking.swift */; };
 		C9CBE741594EEE81DFF6928E /* Pods_ProjectStructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67D6DC54E576391DCE39480 /* Pods_ProjectStructure.framework */; };
@@ -34,6 +35,7 @@
 		481A9ABA22F4411100AF1304 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		481A9ABE22F4413500AF1304 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		481A9AC122F4416B00AF1304 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		488E8ACC23267F950078059A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		48AB7CC323260F8200E23361 /* KxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KxSwift.swift; sourceTree = "<group>"; };
 		48F13B402322653D00ECDF6C /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		65E665B61301AA53C7A7FA5B /* Pods-ProjectStructure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectStructure.release.xcconfig"; path = "Target Support Files/Pods-ProjectStructure/Pods-ProjectStructure.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		481A9A9F22F43A1200AF1304 /* ProjectStructure */ = {
 			isa = PBXGroup;
 			children = (
+				488E8ACA23267F740078059A /* Extensions */,
 				48AB7CC223260F2600E23361 /* DataBinding */,
 				481A9AA022F43A1200AF1304 /* AppDelegate.swift */,
 				481A9AA222F43A1200AF1304 /* ViewController.swift */,
@@ -97,10 +100,10 @@
 				481A9AA722F43A1400AF1304 /* Assets.xcassets */,
 				481A9AA922F43A1400AF1304 /* LaunchScreen.storyboard */,
 				481A9AAC22F43A1400AF1304 /* Info.plist */,
+				481A9AB422F440B100AF1304 /* Services */,
 				481A9AC022F4415600AF1304 /* ViewModel */,
 				481A9ABC22F4411900AF1304 /* Model */,
 				481A9AB822F440F500AF1304 /* Screens */,
-				481A9AB422F440B100AF1304 /* Services */,
 			);
 			path = ProjectStructure;
 			sourceTree = "<group>";
@@ -168,6 +171,22 @@
 				481A9AC122F4416B00AF1304 /* UserViewModel.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		488E8ACA23267F740078059A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				488E8ACB23267F7D0078059A /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		488E8ACB23267F7D0078059A /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				488E8ACC23267F950078059A /* UIColor.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		48AB7CC223260F2600E23361 /* DataBinding */ = {
@@ -297,6 +316,7 @@
 				481A9AB722F440E300AF1304 /* UserServices.swift in Sources */,
 				481A9AA322F43A1200AF1304 /* ViewController.swift in Sources */,
 				481A9ABB22F4411100AF1304 /* LoginViewController.swift in Sources */,
+				488E8ACD23267F950078059A /* UIColor.swift in Sources */,
 				481A9ABF22F4413500AF1304 /* UserModel.swift in Sources */,
 				481A9AC222F4416B00AF1304 /* UserViewModel.swift in Sources */,
 				481A9AA122F43A1200AF1304 /* AppDelegate.swift in Sources */,
