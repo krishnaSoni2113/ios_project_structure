@@ -16,6 +16,7 @@
 		481A9ABB22F4411100AF1304 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A9ABA22F4411100AF1304 /* LoginViewController.swift */; };
 		481A9ABF22F4413500AF1304 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A9ABE22F4413500AF1304 /* UserModel.swift */; };
 		481A9AC222F4416B00AF1304 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A9AC122F4416B00AF1304 /* UserViewModel.swift */; };
+		48AB7CC423260F8200E23361 /* KxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB7CC323260F8200E23361 /* KxSwift.swift */; };
 		48F13B412322653D00ECDF6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F13B402322653D00ECDF6C /* Networking.swift */; };
 		C9CBE741594EEE81DFF6928E /* Pods_ProjectStructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67D6DC54E576391DCE39480 /* Pods_ProjectStructure.framework */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 		481A9ABA22F4411100AF1304 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		481A9ABE22F4413500AF1304 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		481A9AC122F4416B00AF1304 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		48AB7CC323260F8200E23361 /* KxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KxSwift.swift; sourceTree = "<group>"; };
 		48F13B402322653D00ECDF6C /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		65E665B61301AA53C7A7FA5B /* Pods-ProjectStructure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectStructure.release.xcconfig"; path = "Target Support Files/Pods-ProjectStructure/Pods-ProjectStructure.release.xcconfig"; sourceTree = "<group>"; };
 		D67D6DC54E576391DCE39480 /* Pods_ProjectStructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectStructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 		481A9A9F22F43A1200AF1304 /* ProjectStructure */ = {
 			isa = PBXGroup;
 			children = (
+				48AB7CC223260F2600E23361 /* DataBinding */,
 				481A9AA022F43A1200AF1304 /* AppDelegate.swift */,
 				481A9AA222F43A1200AF1304 /* ViewController.swift */,
 				481A9AA422F43A1200AF1304 /* Main.storyboard */,
@@ -165,6 +168,14 @@
 				481A9AC122F4416B00AF1304 /* UserViewModel.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		48AB7CC223260F2600E23361 /* DataBinding */ = {
+			isa = PBXGroup;
+			children = (
+				48AB7CC323260F8200E23361 /* KxSwift.swift */,
+			);
+			path = DataBinding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48AB7CC423260F8200E23361 /* KxSwift.swift in Sources */,
 				481A9AB722F440E300AF1304 /* UserServices.swift in Sources */,
 				481A9AA322F43A1200AF1304 /* ViewController.swift in Sources */,
 				481A9ABB22F4411100AF1304 /* LoginViewController.swift in Sources */,

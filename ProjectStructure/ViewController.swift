@@ -18,5 +18,8 @@ class ViewController: UIViewController {
         viewModel.login()
     }
 
+    @IBAction func onButton(_ sender: UIButton) {
+        viewModel.status.value = !viewModel.status.value
+    }
 }
 
