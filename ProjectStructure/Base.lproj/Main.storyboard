@@ -27,10 +27,24 @@
                                     <action selector="onButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DNG-Wh-IbP"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8G-9s-kM9">
+                                <rect key="frame" x="0.0" y="54" width="414" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="MUC-27-rSf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a8G-9s-kM9" secondAttribute="trailing" id="4cZ-7f-dBm"/>
+                            <constraint firstItem="a8G-9s-kM9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T7V-HI-Qpp"/>
+                            <constraint firstItem="a8G-9s-kM9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="X4d-hq-AVQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="imgProfile" destination="a8G-9s-kM9" id="8ae-ib-hWa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
