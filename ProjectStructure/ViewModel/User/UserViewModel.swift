@@ -17,55 +17,15 @@ class UserViewModel {
     var arrUserId: KxSwift<[Int]> = KxSwift<[Int]>([])
     var image: KxSwift<UIImage?> = KxSwift<UIImage?>(nil)
     
-    // Add your call staus as a constructor to notify your viewController.
     func login() {
         
         UserServices().login(para: nil)
         
-        // This will call when value has change from any where..
-        status.subscribe { [weak self] (result) in
-            
-            guard let `self` = self else {
-                return
-            }
-            
-            if self.status.value {
-                print("True === ")
-            }else {
-                print("False === ")
-            }
-            
-        }
-        
-        // This will call when value has change from any where..
-        name.subscribe { [weak self] (result) in
-            
-            guard let `self` = self else {
-                return
-            }
-            
-            print(self.name.value ?? "")
-        }
-        
-        // This will call when value has change from any where..
-        userId.subscribe { [weak self] (result) in
-            
-            guard let `self` = self else {
-                return
-            }
-            
-            print(self.userId.value)
-        }
-        
-        arrUserId.subscribe { [weak self] (result) in
-            
-            guard let `self` = self else {
-                return
-            }
-            
-            print(self.arrUserId.value)
-        }
-        
-        
+        status.value = !status.value
+        name.value = "Krishna"
+        userId.value = 15
+        arrUserId.value = [15, 10, 12, 2, 3, 4]
+        arrUserId.value.append(200)
+        image.value = UIImage(named: "45.jpg")
     }
 }

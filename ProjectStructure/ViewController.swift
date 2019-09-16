@@ -18,13 +18,14 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = .baseAppThemeColor
         
-        // Call api here..
-        self.configureImage()
-        viewModel.login()
-        
+        self.configureObserver()
     }
-    
-    func configureImage() {
+
+    // Configure KxSwift Observer
+    func configureObserver() {
+        
+        // This will call when value has change from any where..
+        
         viewModel.image.subscribe { [weak self] (result) in
             
             guard let `self` = self else {
@@ -33,17 +34,56 @@ class ViewController: UIViewController {
             
             self.imgProfile?.image = result
         }
+        
+        viewModel.status.subscribe { [weak self] (result) in
+            
+            guard let `self` = self else {
+                return
+            }
+            
+            if self.viewModel.status.value {
+                print("True === ")
+            }else {
+                print("False === ")
+            }
+            
+        }
+        
+        // This will call when value has change from any where..
+        viewModel.name.subscribe { [weak self] (result) in
+            
+            guard let `self` = self else {
+                return
+            }
+            
+            print(self.viewModel.name.value ?? "")
+        }
+        
+        // This will call when value has change from any where..
+        viewModel.userId.subscribe { [weak self] (result) in
+            
+            guard let `self` = self else {
+                return
+            }
+            
+            print(self.viewModel.userId.value)
+        }
+        
+        viewModel.arrUserId.subscribe { [weak self] (result) in
+            
+            guard let `self` = self else {
+                return
+            }
+            
+            print(self.viewModel.arrUserId.value)
+        }
 
     }
 
     @IBAction func onButton(_ sender: UIButton) {
-        viewModel.status.value = !viewModel.status.value
-        viewModel.name.value = "Krishna"
-        viewModel.userId.value = 15
-        viewModel.arrUserId.value = [15, 10, 12, 2, 3, 4]
-        viewModel.arrUserId.value.append(200)
-        viewModel.image.value = UIImage(named: "45.jpg")
         
+        // Call api here..
+        viewModel.login()
     }
 }
 
