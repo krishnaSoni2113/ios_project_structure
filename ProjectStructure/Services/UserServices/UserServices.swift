@@ -2,8 +2,8 @@
 //  UserServices.swift
 //  ProjectStructure
 //
-//  Created by mac-0005 on 02/08/19.
-//  Copyright © 2019 mac-0005. All rights reserved.
+//  Created by Krishna Soni on 02/08/19.
+//  Copyright © 2019 Krishna Soni. All rights reserved.
 //
 
 import Foundation

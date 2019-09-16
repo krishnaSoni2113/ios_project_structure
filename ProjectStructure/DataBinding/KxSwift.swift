@@ -3,7 +3,7 @@
 //  ProjectStructure
 //
 //  Created by Krishna Soni on 09/09/19.
-//  Copyright © 2019 mac-0005. All rights reserved.
+//  Copyright © 2019 Krishna Soni. All rights reserved.
 //
 
 import Foundation
