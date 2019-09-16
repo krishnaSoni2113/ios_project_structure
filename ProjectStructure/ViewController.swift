@@ -22,6 +22,9 @@ class ViewController: UIViewController {
 
     @IBAction func onButton(_ sender: UIButton) {
         viewModel.status.value = !viewModel.status.value
+        viewModel.name.value = "Krishna"
+        viewModel.userId.value = 15
+        
     }
 }
 
