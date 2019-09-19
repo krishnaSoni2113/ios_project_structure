@@ -15,6 +15,7 @@ var APIURL:String        =   "http://192.168.1.162/sevenchats_mul/backend/api/v1
 
 typealias ClosureSuccess = (_ task:URLSessionTask, _ response:AnyObject?, _ data: Data?) -> Void
 typealias ClosureError   = (_ task:URLSessionTask, _ message:String?, _ error:NSError?) -> Void
+typealias ClosureRetry   = ()->()
 
 class Networking: NSObject {
     
@@ -70,6 +71,7 @@ extension Networking {
     // Api Service
     func apiService(
         apiTag tag: String? = nil,
+        retry: Bool,
         param parameters: [String: AnyObject]?,
         apiMethod method: HTTPMethod,
         success : ClosureSuccess?,
@@ -95,8 +97,21 @@ extension Networking {
         self.handleResponseStatus(
             uRequest: uRequest,
             success: success,
-            failure: failure
-        )
+            failure: failure,
+            retry: retry,
+            ClosureRetry: { [weak self] (recallApi) in
+                
+                guard let self = self,
+                    let recallApi = recallApi else {
+                    return
+                }
+                
+                if recallApi {
+                    // auto recall the api whenever get the any error.
+                    _ = self.apiService(apiTag: tag, retry: retry, param: parameters, apiMethod: method, success: success, failure: failure, internalheaders: internalheaders)
+                }
+                
+        })
         
         return uRequest.task
     }
@@ -104,6 +119,7 @@ extension Networking {
     // Api Service for media
     func POST(
         param parameters:[String: AnyObject]?,
+        retry: Bool,
         tag:String?,
         multipartFormData: @escaping (MultipartFormData) -> Void,
         success:ClosureSuccess?,
@@ -135,8 +151,14 @@ extension Networking {
                 self.handleResponseStatus(
                     uRequest: uRequest,
                     success: success,
-                    failure: failure
-                )
+                    failure: failure,
+                    retry: retry,
+                    ClosureRetry: { [weak self] (recallApi) in
+                        
+                        guard let _ = self else {
+                            return
+                        }
+                })
                 
             case .failure(let encodingError):
                 print("encodingError ====>>>> \(encodingError)")
@@ -153,7 +175,9 @@ extension Networking {
     fileprivate func handleResponseStatus(
         uRequest:DataRequest ,
         success : ClosureSuccess?,
-        failure:ClosureError?
+        failure:ClosureError?,
+        retry:Bool,
+        ClosureRetry:@escaping (Bool?)->()
         ) {
         
         self.logging(request: uRequest)
@@ -172,37 +196,29 @@ extension Networking {
                     return
                 }
                 
-                success(
-                    task,
-                    response.result.value as AnyObject,
-                    response.data
-                )
+                success(task, response.result.value as AnyObject, response.data)
                 
             } else {
+                
+                
+                if retry {
+                    ClosureRetry(retry)
+                    return
+                }
                 
                 guard let `failure` = failure, let task = uRequest.task else {
                     return
                 }
                 
                 if response.result.error != nil {
-                    
-                    failure(
-                        task,
-                        nil,
-                        response.result.error as NSError?
-                    )
-                    
+                    failure(task, nil, response.result.error as NSError?)
                 } else {
                     
                     guard let dict = response.result.value as? [String : AnyObject],
                         let statusCode = dict["status"] as? Int,
                         let message = dict["message"] as? String
                         else {
-                            return failure(
-                                uRequest.task!,
-                                nil,
-                                nil
-                            )
+                            return failure(uRequest.task!, nil, nil)
                     }
                     
                     let error = NSError(
@@ -211,11 +227,7 @@ extension Networking {
                         userInfo: dict
                     )
                     
-                    failure(
-                        task,
-                        message,
-                        error
-                    )
+                    failure(task, message, error)
                 }
             }
         }
@@ -262,53 +274,58 @@ extension Networking {
      - Update below methods with Model as per api response.
      */
     
-    /*
-     func checkResponseStatusAndShowAlert(showAlert:Bool, responseobject: AnyObject?, strApiTag:String) -> Bool {
-     
-     if let meta = responseobject?.value(forKey: CJsonMeta) as? [String : Any] {
-     
-     switch meta.valueForInt(key: CJsonStatus) {
-     case CStatusZero:
-     return true
-     
-     case CStatusFour:
-     return true
-     
-     case CStatusTen : //register from admin
-     return true
-     
-     case CStatus200 : //register from admin
-     return true
-     
-     default:
-     if showAlert {
-     let message = meta.valueForString(key: CJsonMessage)
-     GCDMainThread.async {
-     CTopMostViewController.presentAlertViewWithOneButton(alertTitle: "", alertMessage: message, btnOneTitle: CBtnOk, btnOneTapped: nil)
-     }
-     }
-     }
-     }else {
-     if let status = responseobject?.value(forKey: "status") as? Int{
-     if status == 401{
-     let token = (CUserDefaults.value(forKey: UserDefaultDeviceToken)) as? String ?? ""
-     if !token.isBlank{
-     appDelegate.logOut()
-     }
-     }
-     }
-     }
-     
-     return false
-     }
-     
-     func actionOnAPIFailure(errorMessage:String?, showAlert:Bool, strApiTag:String,error:NSError?) -> Void {
-     
-     if showAlert && errorMessage != nil {
-     CTopMostViewController.presentAlertViewWithOneButton(alertTitle: "", alertMessage: errorMessage!, btnOneTitle: CBtnOk, btnOneTapped: nil)
-     }
-     
-     print("API Error =" + "\(strApiTag )" + "\(String(describing: error?.localizedDescription))" )
-     }
-     */
+    
+    func checkResponseStatusAndShowAlert(showAlert:Bool, responseobject: AnyObject?, strApiTag:String) -> Bool {
+        
+        /*
+        if let meta = responseobject?.value(forKey: CJsonMeta) as? [String : Any] {
+            
+            switch meta.valueForInt(key: CJsonStatus) {
+            case CStatusZero:
+                return true
+                
+            case CStatusFour:
+                return true
+                
+            case CStatusTen : //register from admin
+                return true
+                
+            case CStatus200 : //register from admin
+                return true
+                
+            default:
+                if showAlert {
+                    let message = meta.valueForString(key: CJsonMessage)
+                    GCDMainThread.async {
+                        CTopMostViewController.presentAlertViewWithOneButton(alertTitle: "", alertMessage: message, btnOneTitle: CBtnOk, btnOneTapped: nil)
+                    }
+                }
+            }
+        }else {
+            if let status = responseobject?.value(forKey: "status") as? Int{
+                if status == 401{
+                    let token = (CUserDefaults.value(forKey: UserDefaultDeviceToken)) as? String ?? ""
+                    if !token.isBlank{
+                        appDelegate.logOut()
+                    }
+                }
+            }
+        }
+        */
+        
+        return false
+    }
+    
+    func actionOnAPIFailure(errorMessage:String?, showAlert:Bool, strApiTag:String,error:NSError?) -> Void {
+        
+        /*
+        if showAlert && errorMessage != nil {
+            CTopMostViewController.presentAlertViewWithOneButton(alertTitle: "", alertMessage: errorMessage!, btnOneTitle: CBtnOk, btnOneTapped: nil)
+        }
+        
+        print("API Error =" + "\(strApiTag )" + "\(String(describing: error?.localizedDescription))" )
+         */
+        
+    }
+    
 }

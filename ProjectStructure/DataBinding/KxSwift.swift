@@ -14,7 +14,6 @@ class KxSwift<T> {
     var observer: Observer?
     
     var value: T {
-        
         didSet {
             observer?(value)
         }

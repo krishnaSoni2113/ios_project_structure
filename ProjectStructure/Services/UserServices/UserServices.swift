@@ -23,7 +23,7 @@ class UserServices {
                     "latitude" : 0.0,
                     "longitude" : 0.0] as [String : AnyObject]
         
-        _ = Networking.sharedInstance.apiService(apiTag: "login", param: dict, apiMethod: .post, success: { (task, response, data) in
+        _ = Networking.sharedInstance.apiService(apiTag: "login", retry: true, param: dict, apiMethod: .post, success: { (task, response, data) in
             
             print("response ==== ")
             

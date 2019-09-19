@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var imgProfile: UIImageView?
+    @IBOutlet weak var btnLogin: UIButton?
     
     let viewModel: UserViewModel = UserViewModel()
     override func viewDidLoad() {
