@@ -27,6 +27,19 @@ class UserServices {
             
             print("response ==== ")
             
+            guard let data = data else {
+                return
+            }
+            
+            do {
+                let user: User = try data.decoded()
+                print(user.userName)
+            }
+            catch(_) {
+
+            }
+            
+            
         }, failure: { (task, response, error) in
             
             print("error ==== ")

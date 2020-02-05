@@ -21,6 +21,7 @@
 		4888A8E3232F5C73009167C1 /* 45.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4888A8E2232F5C72009167C1 /* 45.jpg */; };
 		488E8ACD23267F950078059A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E8ACC23267F950078059A /* UIColor.swift */; };
 		48AB7CC423260F8200E23361 /* KxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB7CC323260F8200E23361 /* KxSwift.swift */; };
+		48BD8D6723C2F088008954BE /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD8D6623C2F088008954BE /* Data+Extension.swift */; };
 		48F13B412322653D00ECDF6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F13B402322653D00ECDF6C /* Networking.swift */; };
 		C9CBE741594EEE81DFF6928E /* Pods_ProjectStructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67D6DC54E576391DCE39480 /* Pods_ProjectStructure.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		4888A8E2232F5C72009167C1 /* 45.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 45.jpg; sourceTree = "<group>"; };
 		488E8ACC23267F950078059A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		48AB7CC323260F8200E23361 /* KxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KxSwift.swift; sourceTree = "<group>"; };
+		48BD8D6623C2F088008954BE /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		48F13B402322653D00ECDF6C /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		65E665B61301AA53C7A7FA5B /* Pods-ProjectStructure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectStructure.release.xcconfig"; path = "Target Support Files/Pods-ProjectStructure/Pods-ProjectStructure.release.xcconfig"; sourceTree = "<group>"; };
 		D67D6DC54E576391DCE39480 /* Pods_ProjectStructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectStructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 		488E8ACA23267F740078059A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				48BD8D6523C2F06A008954BE /* Foundation */,
 				488E8ACB23267F7D0078059A /* UIKit */,
 			);
 			path = Extensions;
@@ -204,6 +207,14 @@
 				48AB7CC323260F8200E23361 /* KxSwift.swift */,
 			);
 			path = DataBinding;
+			sourceTree = "<group>";
+		};
+		48BD8D6523C2F06A008954BE /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				48BD8D6623C2F088008954BE /* Data+Extension.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +338,7 @@
 				481A9AB722F440E300AF1304 /* UserServices.swift in Sources */,
 				481A9AA322F43A1200AF1304 /* ViewController.swift in Sources */,
 				481A9ABB22F4411100AF1304 /* LoginViewController.swift in Sources */,
+				48BD8D6723C2F088008954BE /* Data+Extension.swift in Sources */,
 				488E8ACD23267F950078059A /* UIColor.swift in Sources */,
 				48304D2F23BCA1850052111F /* Application+Extension.swift in Sources */,
 				481A9ABF22F4413500AF1304 /* UserModel.swift in Sources */,
